@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Entendendo o Hello World</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F3F1E9;
+    --card: #FFFFFF;
+    --ink: #17181A;
+    --muted: #55574F;
+    --accent: #D8432E;
+    --code-bg: #14171A;
+    --code-green: #6FD98A;
+    --code-blue: #6FA8DC;
+    --code-text: #E8E6DF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    padding:24px 16px 60px;
+  }
+  .deck{
+    max-width:560px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .slide{
+    background:var(--card);
+    border:2px solid var(--ink);
+    border-radius:4px;
+    padding:26px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  .tag{
+    position:absolute;
+    top:14px; right:14px;
+    background:var(--ink);
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    padding:4px 8px;
+    border-radius:20px;
+  }
+  h1.title{
+    font-family:'Press Start 2P',monospace;
+    font-size:22px;
+    line-height:1.5;
+    margin:0 0 10px;
+  }
+  h2.heading{
+    font-family:'Press Start 2P',monospace;
+    font-size:14px;
+    line-height:1.6;
+    margin:0 0 4px;
+  }
+  .underline{
+    width:52px;
+    height:4px;
+    background:var(--accent);
+    margin:8px 0 16px;
+  }
+  p{
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--muted);
+    margin:0 0 12px;
+  }
+  p strong{color:var(--ink);}
+  .sub{
+    font-size:14px;
+    color:var(--muted);
+    margin:0 0 18px;
+  }
+  .footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+  }
+  code.inline{
+    font-family:'JetBrains Mono',monospace;
+    background:#EDEAE0;
+    padding:1px 6px;
+    border-radius:3px;
+    font-size:13px;
+    color:var(--ink);
+  }
+  .codebox{
+    background:var(--code-bg);
+    border-radius:6px;
+    padding:14px 16px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--code-text);
+    margin:10px 0 16px;
+    line-height:1.7;
+    overflow-x:auto;
+    white-space:pre;
+  }
+  .kw{color:#D28FE0;}
+  .str{color:var(--code-green);}
+  .fn{color:var(--code-blue);}
+  .step{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .step .num{
+    flex:none;
+    width:26px; height:26px;
+    background:var(--ink);
+    color:#fff;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    font-weight:700;
+  }
+  .step .body b{
+    display:block;
+    font-size:14px;
+    margin-bottom:3px;
+  }
+  .step .body span{
+    font-size:13.5px;
+    color:var(--muted);
+    line-height:1.6;
+  }
+  .box{
+    background:#EDEAE0;
+    border-left:3px solid var(--accent);
+    padding:10px 14px;
+    border-radius:4px;
+    margin:14px 0;
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  .diagram{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin:14px 0 18px;
+  }
+  .dstep{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#F8F6F0;
+    border:1px solid #DEDACD;
+    border-radius:6px;
+    padding:9px 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+  }
+  .brand{
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="slide">
+    <span class="tag">1/5</span>
+    <h1 class="title">ENTENDENDO O QUE ACONTECE AO CRIAR O PRIMEIRO "HELLO WORLD"</h1>
+    <p class="sub">Não é só rodar o código. É entender o que ele é, onde ele roda e o que acontece por trás de cada linha.</p>
+    <div class="footer"><span>gisa.dev</span><span>java · explicado</span></div>
+  </div>
+
+  <div class="slide">
+    <span class="tag">2/5</span>
+    <h2 class="heading">O QUE É O HELLO WORLD, DE VERDADE</h2>
+    <div class="underline"></div>
+    <p>Não é só um programa qualquer: é um ritual. Desde os anos 1970 (a expressão vem do livro clássico de C, de Kernighan e Ritchie), praticamente toda linguagem nova é apresentada assim.</p>
+    <p><strong>Por que sempre esse mesmo exemplo?</strong> Porque ele testa, com o mínimo de código possível, se o ambiente inteiro está funcionando: o editor, o compilador e a forma de rodar o programa. Se "Hello, World!" aparece na tela, você sabe que a engrenagem toda está pronta para coisas mais complexas.</p>
+    <div class="box">É o menor programa "completo" em Java: já tem classe, método principal e uma instrução de saída — os três blocos que aparecem em qualquer programa maior.</div>
+    <div class="footer"><span>gisa.dev</span><span>conceito</span></div>
+  </div>
+
+  <div class="slide">
+    <span class="tag">3/5</span>
+    <h2 class="heading">ONDE ISSO RODA</h2>
+    <div class="underline"></div>
+    <p>O código não roda "no ar" — ele passa por peças específicas, cada uma com um papel diferente:</p>
+    <div class="step">
+      <div class="num">1</div>
+      <div class="body"><b>O editor de código</b><span>Onde você escreve o texto do programa. Pode ser um editor simples (VS Code) ou uma IDE completa (IntelliJ, Eclipse). Aqui o arquivo é só texto — nada é executado ainda.</span></div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div class="body"><b>O arquivo .java</b><span>Salvo em disco com o mesmo nome da classe pública (<code class="inline">HelloWorld.java</code> para <code class="inline">class HelloWorld</code>). Java exige essa correspondência exata.</span></div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div class="body"><b>O JDK instalado na máquina</b><span>O "Java Development Kit" traz o compilador (<code class="inline">javac</code>) e a JVM. Sem ele instalado, não existe onde compilar nem onde rodar o código.</span></div>
+    </div>
+    <div class="box">JDK = ferramentas para <strong>desenvolver</strong>. JRE = ambiente para <strong>rodar</strong>. JVM = a máquina virtual que de fato <strong>executa</strong> o programa. O JDK inclui os outros dois.</div>
+    <div class="footer"><span>gisa.dev</span><span>ambiente</span></div>
+  </div>
+
+  <div class="slide">
+    <span class="tag">4/5</span>
+    <h2 class="heading">O QUE ACONTECE NOS BASTIDORES</h2>
+    <div class="underline"></div>
+    <p>Entre escrever o código e ver o texto na tela, acontecem etapas concretas — nenhuma delas é mágica:</p>
+    <div class="diagram">
+      <div class="dstep">📝 HelloWorld.java — texto legível, feito para humanos lerem</div>
+      <div class="dstep">↓ javac compila</div>
+      <div class="dstep">⚙️ HelloWorld.class — bytecode, um código intermediário</div>
+      <div class="dstep">↓ java inicia a JVM</div>
+      <div class="dstep">💻 JVM lê e executa o bytecode</div>
+      <div class="dstep">↓</div>
+      <div class="dstep">🖥️ Console mostra: Hello, World!</div>
+    </div>
+    <p><strong>Por que existe essa etapa intermediária (bytecode)?</strong> Porque o bytecode não é específico de nenhum sistema operacional. A JVM de cada sistema (Windows, Linux, Mac) sabe traduzi-lo para instruções que o processador daquela máquina entende. É esse o motivo do lema "escreva uma vez, rode em qualquer lugar".</p>
+    <div class="codebox"><span class="kw">public class</span> HelloWorld {
+  <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {
+    System.out.<span class="fn">println</span>(<span class="str">"Hello, World!"</span>);
+  }
+}</div>
+    <p><code class="inline">System.out</code> é o canal de saída padrão do programa — o <code class="inline">println</code> manda o texto para esse canal, e é o terminal que o exibe na tela.</p>
+    <div class="footer"><span>gisa.dev</span><span>compilação · execução</span></div>
+  </div>
+
+  <div class="slide">
+    <span class="tag">5/5</span>
+    <h2 class="heading">🏆 AGORA VOCÊ ENTENDE, NÃO SÓ RODOU</h2>
+    <div class="underline"></div>
+    <p>Você viu o que é o Hello World, onde cada peça mora no seu computador e o que acontece entre o código-fonte e o texto na tela: compilação para bytecode, execução pela JVM, saída no console.</p>
+    <p>Esse é o alicerce de qualquer programa Java que vier depois — só muda a complexidade do que está dentro do <code class="inline">main</code>.</p>
+    <div class="footer"><span>gisa.dev</span><span>continue codando</span></div>
+  </div>
+
+  <p class="brand">feito para explicar, não só mostrar</p>
+</div>
+</body>
+</html>
