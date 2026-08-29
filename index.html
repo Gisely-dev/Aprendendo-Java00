@@ -2,253 +2,295 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Entendendo o Hello World</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java: Seu Primeiro Programa (Hello World)</title>
 <style>
-  :root{
-    --bg: #F3F1E9;
-    --card: #FFFFFF;
-    --ink: #17181A;
-    --muted: #55574F;
-    --accent: #D8432E;
-    --code-bg: #14171A;
-    --code-green: #6FD98A;
-    --code-blue: #6FA8DC;
-    --code-text: #E8E6DF;
+  :root {
+    --bg: #1e1e2e;
+    --panel: #27293d;
+    --accent: #f78c3c;
+    --accent2: #6cc7a1;
+    --text: #e8e8f0;
+    --muted: #a3a3b8;
+    --code-bg: #14141f;
+    --border: #3a3a52;
   }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    font-family:'Inter',sans-serif;
-    color:var(--ink);
-    padding:24px 16px 60px;
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(180deg, #16161f, #1e1e2e 400px);
+    color: var(--text);
+    line-height: 1.7;
   }
-  .deck{
-    max-width:560px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
   }
-  .slide{
-    background:var(--card);
-    border:2px solid var(--ink);
-    border-radius:4px;
-    padding:26px 22px;
-    position:relative;
-    overflow:hidden;
+  header {
+    text-align: center;
+    margin-bottom: 40px;
   }
-  .tag{
-    position:absolute;
-    top:14px; right:14px;
-    background:var(--ink);
-    color:#fff;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    padding:4px 8px;
-    border-radius:20px;
+  header .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #1e1e2e;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
   }
-  h1.title{
-    font-family:'Press Start 2P',monospace;
-    font-size:22px;
-    line-height:1.5;
-    margin:0 0 10px;
+  h1 {
+    font-size: 2rem;
+    margin: 0 0 10px;
   }
-  h2.heading{
-    font-family:'Press Start 2P',monospace;
-    font-size:14px;
-    line-height:1.6;
-    margin:0 0 4px;
+  header p {
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
   }
-  .underline{
-    width:52px;
-    height:4px;
-    background:var(--accent);
-    margin:8px 0 16px;
+  .step {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 26px;
+    position: relative;
   }
-  p{
-    font-size:14.5px;
-    line-height:1.65;
-    color:var(--muted);
-    margin:0 0 12px;
+  .step::before {
+    content: attr(data-n);
+    position: absolute;
+    top: -14px;
+    left: 22px;
+    background: var(--accent);
+    color: #1e1e2e;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
   }
-  p strong{color:var(--ink);}
-  .sub{
-    font-size:14px;
-    color:var(--muted);
-    margin:0 0 18px;
+  .step h2 {
+    margin-top: 8px;
+    font-size: 1.35rem;
+    color: var(--accent2);
   }
-  .footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:18px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    color:var(--muted);
+  .step p { margin: 10px 0; }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 0.92rem;
+    margin: 14px 0;
   }
-  code.inline{
-    font-family:'JetBrains Mono',monospace;
-    background:#EDEAE0;
-    padding:1px 6px;
-    border-radius:3px;
-    font-size:13px;
-    color:var(--ink);
+  code {
+    font-family: 'Fira Code', Consolas, monospace;
   }
-  .codebox{
-    background:var(--code-bg);
-    border-radius:6px;
-    padding:14px 16px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12.5px;
-    color:var(--code-text);
-    margin:10px 0 16px;
-    line-height:1.7;
-    overflow-x:auto;
-    white-space:pre;
+  .inline-code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: var(--accent2);
   }
-  .kw{color:#D28FE0;}
-  .str{color:var(--code-green);}
-  .fn{color:var(--code-blue);}
-  .step{
-    display:flex;
-    gap:12px;
-    margin-bottom:16px;
-    align-items:flex-start;
+  .kw { color: #f78c3c; }
+  .str { color: #b5e08c; }
+  .cm { color: #6c7086; font-style: italic; }
+  .ty { color: #7fb4ff; }
+  .box {
+    background: #23233a;
+    border-left: 4px solid var(--accent2);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 14px 0;
+    font-size: 0.95rem;
   }
-  .step .num{
-    flex:none;
-    width:26px; height:26px;
-    background:var(--ink);
-    color:#fff;
-    border-radius:6px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'JetBrains Mono',monospace;
-    font-size:13px;
-    font-weight:700;
+  .box.warn {
+    border-left-color: #f78c3c;
   }
-  .step .body b{
-    display:block;
-    font-size:14px;
-    margin-bottom:3px;
+  .box strong { color: var(--accent2); }
+  .box.warn strong { color: var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92rem;
   }
-  .step .body span{
-    font-size:13.5px;
-    color:var(--muted);
-    line-height:1.6;
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    text-align: left;
   }
-  .box{
-    background:#EDEAE0;
-    border-left:3px solid var(--accent);
-    padding:10px 14px;
-    border-radius:4px;
-    margin:14px 0;
-    font-size:13.5px;
-    color:var(--ink);
+  th {
+    background: #2f314a;
+    color: var(--accent2);
   }
-  .diagram{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    margin:14px 0 18px;
+  .exercise {
+    background: #262a3d;
+    border: 1px dashed var(--accent2);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-top: 16px;
   }
-  .dstep{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:#F8F6F0;
-    border:1px solid #DEDACD;
-    border-radius:6px;
-    padding:9px 12px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
+  .exercise h3 {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 1rem;
   }
-  .brand{
-    text-align:center;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    color:var(--muted);
+  footer {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 50px;
+    font-size: 0.85rem;
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 40px;
+  }
+  .nav a {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: 0.2s;
+  }
+  .nav a:hover {
+    background: var(--accent);
+    color: #1e1e2e;
+    border-color: var(--accent);
   }
 </style>
 </head>
 <body>
-<div class="deck">
+<div class="wrap">
 
-  <div class="slide">
-    <span class="tag">1/5</span>
-    <h1 class="title">ENTENDENDO O QUE ACONTECE AO CRIAR O PRIMEIRO "HELLO WORLD"</h1>
-    <p class="sub">Não é só rodar o código. É entender o que ele é, onde ele roda e o que acontece por trás de cada linha.</p>
-    <div class="footer"><span>gisa.dev</span><span>java · explicado</span></div>
-  </div>
+  <header>
+    <span class="tag">APRENDENDO JAVA · PARTE 1</span>
+    <h1>Seu Primeiro Programa em Java: o Hello World</h1>
+    <p>Todo programador começa por aqui. Neste guia você vai entender, linha por linha, o que é esse tal "Hello World" e por que ele parece mais complicado em Java do que em outras linguagens.</p>
+  </header>
 
-  <div class="slide">
-    <span class="tag">2/5</span>
-    <h2 class="heading">O QUE É O HELLO WORLD, DE VERDADE</h2>
-    <div class="underline"></div>
-    <p>Não é só um programa qualquer: é um ritual. Desde os anos 1970 (a expressão vem do livro clássico de C, de Kernighan e Ritchie), praticamente toda linguagem nova é apresentada assim.</p>
-    <p><strong>Por que sempre esse mesmo exemplo?</strong> Porque ele testa, com o mínimo de código possível, se o ambiente inteiro está funcionando: o editor, o compilador e a forma de rodar o programa. Se "Hello, World!" aparece na tela, você sabe que a engrenagem toda está pronta para coisas mais complexas.</p>
-    <div class="box">É o menor programa "completo" em Java: já tem classe, método principal e uma instrução de saída — os três blocos que aparecem em qualquer programa maior.</div>
-    <div class="footer"><span>gisa.dev</span><span>conceito</span></div>
-  </div>
+  <nav class="nav">
+    <a href="#preparando">Preparando o ambiente</a>
+    <a href="#codigo">O código</a>
+    <a href="#linha-a-linha">Explicando linha a linha</a>
+    <a href="#executando">Compilando e executando</a>
+    <a href="#erros">Erros comuns</a>
+    <a href="#projeto">Pratique</a>
+  </nav>
 
-  <div class="slide">
-    <span class="tag">3/5</span>
-    <h2 class="heading">ONDE ISSO RODA</h2>
-    <div class="underline"></div>
-    <p>O código não roda "no ar" — ele passa por peças específicas, cada uma com um papel diferente:</p>
-    <div class="step">
-      <div class="num">1</div>
-      <div class="body"><b>O editor de código</b><span>Onde você escreve o texto do programa. Pode ser um editor simples (VS Code) ou uma IDE completa (IntelliJ, Eclipse). Aqui o arquivo é só texto — nada é executado ainda.</span></div>
+  <section class="step" id="preparando" data-n="0">
+    <h2>Antes de começar: o que você precisa</h2>
+    <p>Para escrever e rodar programas em Java, você precisa de duas coisas instaladas no seu computador:</p>
+    <ul>
+      <li><strong>JDK (Java Development Kit)</strong> — o "kit" que contém o compilador e tudo que é necessário para criar programas Java.</li>
+      <li><strong>Um editor de código</strong> — pode ser algo simples como o VS Code, ou uma IDE completa como o IntelliJ IDEA ou Eclipse.</li>
+    </ul>
+    <div class="box">
+      <strong>Dica:</strong> para verificar se o Java já está instalado, abra o terminal (ou prompt de comando) e digite <span class="inline-code">java -version</span>. Se aparecer um número de versão, está tudo pronto.
     </div>
-    <div class="step">
-      <div class="num">2</div>
-      <div class="body"><b>O arquivo .java</b><span>Salvo em disco com o mesmo nome da classe pública (<code class="inline">HelloWorld.java</code> para <code class="inline">class HelloWorld</code>). Java exige essa correspondência exata.</span></div>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <div class="body"><b>O JDK instalado na máquina</b><span>O "Java Development Kit" traz o compilador (<code class="inline">javac</code>) e a JVM. Sem ele instalado, não existe onde compilar nem onde rodar o código.</span></div>
-    </div>
-    <div class="box">JDK = ferramentas para <strong>desenvolver</strong>. JRE = ambiente para <strong>rodar</strong>. JVM = a máquina virtual que de fato <strong>executa</strong> o programa. O JDK inclui os outros dois.</div>
-    <div class="footer"><span>gisa.dev</span><span>ambiente</span></div>
-  </div>
+  </section>
 
-  <div class="slide">
-    <span class="tag">4/5</span>
-    <h2 class="heading">O QUE ACONTECE NOS BASTIDORES</h2>
-    <div class="underline"></div>
-    <p>Entre escrever o código e ver o texto na tela, acontecem etapas concretas — nenhuma delas é mágica:</p>
-    <div class="diagram">
-      <div class="dstep">📝 HelloWorld.java — texto legível, feito para humanos lerem</div>
-      <div class="dstep">↓ javac compila</div>
-      <div class="dstep">⚙️ HelloWorld.class — bytecode, um código intermediário</div>
-      <div class="dstep">↓ java inicia a JVM</div>
-      <div class="dstep">💻 JVM lê e executa o bytecode</div>
-      <div class="dstep">↓</div>
-      <div class="dstep">🖥️ Console mostra: Hello, World!</div>
+  <section class="step" id="codigo" data-n="1">
+    <h2>O código completo</h2>
+    <p>Crie um arquivo chamado <span class="inline-code">HelloWorld.java</span> e escreva exatamente isto:</p>
+    <pre><code><span class="kw">public class</span> HelloWorld {
+    <span class="kw">public static void</span> main(String[] args) {
+        System.out.println(<span class="str">"Hello, World!"</span>);
+    }
+}</code></pre>
+    <div class="box warn">
+      <strong>Atenção:</strong> o nome do arquivo precisa ser <strong>idêntico</strong> ao nome da classe pública, incluindo maiúsculas e minúsculas. Se a classe se chama <span class="inline-code">HelloWorld</span>, o arquivo tem que ser <span class="inline-code">HelloWorld.java</span> — nem <span class="inline-code">helloworld.java</span>, nem <span class="inline-code">Hello.java</span>.
     </div>
-    <p><strong>Por que existe essa etapa intermediária (bytecode)?</strong> Porque o bytecode não é específico de nenhum sistema operacional. A JVM de cada sistema (Windows, Linux, Mac) sabe traduzi-lo para instruções que o processador daquela máquina entende. É esse o motivo do lema "escreva uma vez, rode em qualquer lugar".</p>
-    <div class="codebox"><span class="kw">public class</span> HelloWorld {
-  <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {
-    System.out.<span class="fn">println</span>(<span class="str">"Hello, World!"</span>);
-  }
-}</div>
-    <p><code class="inline">System.out</code> é o canal de saída padrão do programa — o <code class="inline">println</code> manda o texto para esse canal, e é o terminal que o exibe na tela.</p>
-    <div class="footer"><span>gisa.dev</span><span>compilação · execução</span></div>
-  </div>
+  </section>
 
-  <div class="slide">
-    <span class="tag">5/5</span>
-    <h2 class="heading">🏆 AGORA VOCÊ ENTENDE, NÃO SÓ RODOU</h2>
-    <div class="underline"></div>
-    <p>Você viu o que é o Hello World, onde cada peça mora no seu computador e o que acontece entre o código-fonte e o texto na tela: compilação para bytecode, execução pela JVM, saída no console.</p>
-    <p>Esse é o alicerce de qualquer programa Java que vier depois — só muda a complexidade do que está dentro do <code class="inline">main</code>.</p>
-    <div class="footer"><span>gisa.dev</span><span>continue codando</span></div>
-  </div>
+  <section class="step" id="linha-a-linha" data-n="2">
+    <h2>Explicando linha a linha</h2>
+    <p>Java é uma linguagem mais "verbosa" que outras — cada linha tem um papel específico. Vamos destrinchar:</p>
 
-  <p class="brand">feito para explicar, não só mostrar</p>
+    <p><span class="inline-code">public class HelloWorld {</span></p>
+    <p>Toda linha de código em Java precisa estar dentro de uma <strong>classe</strong>. Aqui estamos criando uma classe chamada <span class="inline-code">HelloWorld</span>. A palavra <span class="inline-code">public</span> significa que essa classe pode ser acessada de fora do arquivo.</p>
+
+    <p><span class="inline-code">public static void main(String[] args) {</span></p>
+    <p>Esta é a linha mais importante: o método <span class="inline-code">main</span> é o <strong>ponto de entrada</strong> do programa — é por aqui que o Java começa a executar o código. Cada palavra tem um motivo de estar ali:</p>
+    <table>
+      <tr><th>Palavra</th><th>O que significa</th></tr>
+      <tr><td><span class="inline-code">public</span></td><td>o método pode ser chamado de fora da classe</td></tr>
+      <tr><td><span class="inline-code">static</span></td><td>o método pertence à classe, não precisa criar um objeto para usá-lo</td></tr>
+      <tr><td><span class="inline-code">void</span></td><td>o método não devolve nenhum valor</td></tr>
+      <tr><td><span class="inline-code">main</span></td><td>o nome do método — o Java sempre procura por um método chamado exatamente assim</td></tr>
+      <tr><td><span class="inline-code">String[] args</span></td><td>uma lista de textos que podem ser passados ao programa na hora de executá-lo</td></tr>
+    </table>
+
+    <p><span class="inline-code">System.out.println("Hello, World!");</span></p>
+    <p>Esta linha manda uma mensagem para a tela (a "saída padrão"). <span class="inline-code">System.out</span> representa a saída do console, e <span class="inline-code">println</span> ("print line") imprime o texto e pula para a linha seguinte.</p>
+
+    <p><span class="inline-code">}</span> <span class="cm">(duas vezes)</span></p>
+    <p>Cada chave de abertura <span class="inline-code">{</span> precisa de uma chave de fechamento <span class="inline-code">}</span> correspondente. A primeira fecha o método <span class="inline-code">main</span>, a segunda fecha a classe <span class="inline-code">HelloWorld</span>.</p>
+
+    <div class="box">
+      <strong>Por que tudo isso só para imprimir um texto?</strong> Porque Java é uma linguagem orientada a objetos e fortemente estruturada. Essa "verbosidade" inicial é o preço de uma organização que faz muita diferença em programas grandes — e você vai automatizar essa estrutura rapidamente.
+    </div>
+  </section>
+
+  <section class="step" id="executando" data-n="3">
+    <h2>Compilando e executando</h2>
+    <p>Diferente de linguagens interpretadas, o Java precisa ser <strong>compilado</strong> antes de rodar. Isso transforma seu código-fonte (<span class="inline-code">.java</span>) em bytecode (<span class="inline-code">.class</span>), que a Máquina Virtual Java (JVM) entende.</p>
+    <p>No terminal, dentro da pasta do arquivo, digite:</p>
+    <pre><code>javac HelloWorld.java</code></pre>
+    <p>Isso gera um arquivo <span class="inline-code">HelloWorld.class</span>. Agora, para executar:</p>
+    <pre><code>java HelloWorld</code></pre>
+    <div class="box">
+      <strong>Repare:</strong> no comando <span class="inline-code">javac</span> você usa a extensão <span class="inline-code">.java</span>, mas no comando <span class="inline-code">java</span> para executar, usa só o nome da classe, sem extensão.
+    </div>
+    <p>Se tudo deu certo, o terminal vai mostrar:</p>
+    <pre><code>Hello, World!</code></pre>
+  </section>
+
+  <section class="step" id="erros" data-n="4">
+    <h2>Erros comuns de quem está começando</h2>
+    <table>
+      <tr><th>Erro</th><th>Causa provável</th></tr>
+      <tr><td><span class="inline-code">class HelloWorld is public, should be declared in a file named HelloWorld.java</span></td><td>o nome do arquivo não bate com o nome da classe pública</td></tr>
+      <tr><td><span class="inline-code">';' expected</span></td><td>esqueceu do ponto e vírgula no final de uma linha</td></tr>
+      <tr><td><span class="inline-code">cannot find symbol</span></td><td>erro de digitação em algum nome (ex.: <span class="inline-code">Systm.out</span> em vez de <span class="inline-code">System.out</span>)</td></tr>
+      <tr><td><span class="inline-code">'main' method not found</span></td><td>o método <span class="inline-code">main</span> foi escrito errado ou está faltando algum modificador (<span class="inline-code">public static void</span>)</td></tr>
+    </table>
+    <div class="box warn">
+      <strong>Dica de ouro:</strong> Java é sensível a maiúsculas e minúsculas (case-sensitive). <span class="inline-code">String</span> é diferente de <span class="inline-code">string</span>, e <span class="inline-code">main</span> é diferente de <span class="inline-code">Main</span>.
+    </div>
+  </section>
+
+  <section class="step exercise" id="projeto" data-n="5">
+    <h2>🎯 Agora é sua vez</h2>
+    <p>Antes de seguir para o próximo passo da série, tente estas variações para fixar o conteúdo:</p>
+    <ul>
+      <li>Altere a mensagem para imprimir seu próprio nome, por exemplo: <span class="inline-code">"Olá, eu sou [seu nome]!"</span></li>
+      <li>Adicione uma segunda linha com <span class="inline-code">System.out.println(...)</span> imprimindo outra frase.</li>
+      <li>Troque um <span class="inline-code">println</span> por um <span class="inline-code">print</span> (sem o "ln") e observe a diferença no resultado.</li>
+    </ul>
+  </section>
+
+  <section class="step" data-n="✓">
+    <h2>Para onde ir agora</h2>
+    <p>Com o Hello World rodando, o próximo passo natural da série é aprender a <strong>guardar informações</strong> no programa: variáveis, tipos de dados, operadores e entrada de dados com <span class="inline-code">Scanner</span> — conteúdo já disponível na Parte 2 do repositório.</p>
+  </section>
+
+  <footer>
+    Me siga para acompanhar essa série de repositórios <em>aprendendo-java</em> 🚀
+  </footer>
+
 </div>
 </body>
 </html>
